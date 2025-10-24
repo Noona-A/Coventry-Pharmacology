@@ -107,7 +107,8 @@ export default function Lists() {
           fontSize: '1.2rem',
           textDecoration: 'none',
           transition: 'all 0.3s ease',
-          zIndex: 100
+          boxShadow: '0 0 20px rgba(139, 92, 246, 0.3)',
+          zIndex: 1000
         }}>
           🏠
         </Link>
@@ -154,31 +155,35 @@ export default function Lists() {
                 key={deck.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                whileHover={{ scale: 1.01 }}
+                whileHover={{ scale: 1.02 }}
                 style={{
-                  background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.15))',
-                  border: '2px solid rgba(139, 92, 246, 0.3)',
+                  background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2))',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(139, 92, 246, 0.3)',
                   borderRadius: '20px',
                   padding: 'clamp(12px, 3vw, 24px)',
                   display: 'flex',
                   alignItems: 'center',
                   gap: 'clamp(12px, 3vw, 24px)',
                   transition: 'all 0.3s ease',
-                  minHeight: '80px'
+                  minHeight: '80px',
+                  boxShadow: '0 0 20px rgba(138, 43, 226, 0.2)',
+                  cursor: 'pointer'
                 }}
+                onClick={() => setSelectedDeckId(deck.id)}
               >
                 {/* Deck Icon */}
                 <div style={{
                   width: 'clamp(50px, 10vw, 70px)',
                   height: 'clamp(50px, 10vw, 70px)',
-                  background: 'linear-gradient(135deg, rgba(255, 107, 107, 0.3), rgba(255, 61, 87, 0.3))',
+                  background: 'linear-gradient(135deg, #9A40FF, #3B82F6)',
                   borderRadius: '16px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
                   flexShrink: 0,
-                  boxShadow: '0 4px 20px rgba(255, 107, 107, 0.2)'
+                  boxShadow: '0 4px 20px rgba(154, 64, 255, 0.4)'
                 }}>
                   {renderDeckIcon(deck)}
                 </div>
@@ -268,8 +273,9 @@ export default function Lists() {
                     style={{
                       width: 'clamp(50px, 10vw, 60px)',
                       height: 'clamp(50px, 10vw, 60px)',
-                      background: 'linear-gradient(135deg, rgba(74, 222, 128, 0.3), rgba(34, 197, 94, 0.3))',
-                      border: '2px solid rgba(74, 222, 128, 0.5)',
+                      background: 'rgba(74, 222, 128, 0.2)',
+                      backdropFilter: 'blur(10px)',
+                      border: '1px solid rgba(74, 222, 128, 0.3)',
                       borderRadius: '16px',
                       color: 'rgb(74, 222, 128)',
                       fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
@@ -277,7 +283,7 @@ export default function Lists() {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      boxShadow: '0 4px 20px rgba(74, 222, 128, 0.2)'
+                      boxShadow: '0 0 15px rgba(74, 222, 128, 0.3)'
                     }}
                   >
                     ▶
@@ -292,8 +298,9 @@ export default function Lists() {
                     style={{
                       width: 'clamp(50px, 10vw, 60px)',
                       height: 'clamp(50px, 10vw, 60px)',
-                      background: 'linear-gradient(135deg, rgba(96, 165, 250, 0.3), rgba(59, 130, 246, 0.3))',
-                      border: '2px solid rgba(96, 165, 250, 0.5)',
+                      background: 'rgba(96, 165, 250, 0.2)',
+                      backdropFilter: 'blur(10px)',
+                      border: '1px solid rgba(96, 165, 250, 0.3)',
                       borderRadius: '16px',
                       color: 'rgb(96, 165, 250)',
                       fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
@@ -301,7 +308,7 @@ export default function Lists() {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      boxShadow: '0 4px 20px rgba(96, 165, 250, 0.2)'
+                      boxShadow: '0 0 15px rgba(96, 165, 250, 0.3)'
                     }}
                   >
                     ✎
@@ -346,6 +353,7 @@ export default function Lists() {
         fontSize: '1.2rem',
         textDecoration: 'none',
         transition: 'all 0.3s ease',
+        boxShadow: '0 0 20px rgba(139, 92, 246, 0.3)',
         zIndex: 100
       }}>
         🏠
