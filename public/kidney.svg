@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Kidney shape -->
+  <path d="M50 10 C35 10, 25 15, 20 25 C15 35, 15 50, 20 65 C25 80, 35 90, 50 90 C55 90, 58 88, 60 85 C62 82, 62 78, 60 75 C58 72, 55 70, 50 70 C48 70, 46 71, 45 73 C44 75, 44 77, 45 79 C46 81, 48 82, 50 82 C58 82, 65 78, 70 70 C75 62, 75 50, 70 38 C65 26, 58 15, 50 10 Z" 
+        fill="#E57373" 
+        stroke="#C62828" 
+        stroke-width="2"/>
+  <!-- Inner detail -->
+  <ellipse cx="40" cy="45" rx="12" ry="20" fill="#EF9A9A" opacity="0.6"/>
+  <ellipse cx="55" cy="50" rx="8" ry="15" fill="#FFCDD2" opacity="0.5"/>
+</svg>
