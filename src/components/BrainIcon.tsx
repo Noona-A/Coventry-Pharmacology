@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useGame, BRAIN_COSMETICS } from '../store'
+import { getAssetPath } from '../utils/assets'
 
 interface BrainIconProps {
   size?: number
@@ -16,7 +17,7 @@ export default function BrainIcon({ size = 120, className = '', previewCosmetics
   // Get the equipped color (default to orange)
   const colorCosmeticId = equippedCosmetics?.color || 'color-orange'
   const colorCosmetic = BRAIN_COSMETICS.find(c => c.id === colorCosmeticId)
-  const brainImage = colorCosmetic?.image || '/Brain.png'
+  const brainImage = getAssetPath(colorCosmetic?.image || '/Brain.png')
   
   const colorMap: Record<string, { primary: string; secondary: string; glow: string }> = {
     'color-orange': { primary: 'rgba(255, 152, 0, 0.6)', secondary: 'rgba(255, 87, 34, 0.4)', glow: 'rgba(255, 152, 0, 0.8)' },
@@ -150,7 +151,7 @@ export default function BrainIcon({ size = 120, className = '', previewCosmetics
         {/* Accessory overlay - moves with brain */}
         {accessory && accessoryCosmetic && accessoryCosmetic.image && (
           <img 
-            src={accessoryCosmetic.image} 
+            src={getAssetPath(accessoryCosmetic.image)} 
             alt={accessoryCosmetic.name}
             style={{
               position: 'absolute',
@@ -168,7 +169,7 @@ export default function BrainIcon({ size = 120, className = '', previewCosmetics
         {/* Pet overlay - moves with the brain (same animated container to keep perfect sync) */}
         {pet && petCosmetic && petCosmetic.image && (
           <img
-            src={petCosmetic.image}
+            src={getAssetPath(petCosmetic.image)}
             alt={petCosmetic.name}
             style={{
               position: 'absolute',

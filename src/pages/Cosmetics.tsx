@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { useGame, BRAIN_COSMETICS } from '../store'
 import { useState } from 'react'
 import BrainIcon from '../components/BrainIcon'
+import { getAssetPath } from '../utils/assets'
 
 export default function Cosmetics() {
   const { gold, ownedCosmetics, equippedCosmetics, buyCosmetic, equipCosmetic } = useGame()
@@ -261,7 +262,7 @@ export default function Cosmetics() {
               }}>
                 {cosmetic.image ? (
                   <img 
-                    src={cosmetic.image} 
+                    src={getAssetPath(cosmetic.image)} 
                     alt={cosmetic.name}
                     style={{
                       width: '100%',

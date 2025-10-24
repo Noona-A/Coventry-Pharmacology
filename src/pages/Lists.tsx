@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useGame, type Deck } from '../store'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { getAssetPath } from '../utils/assets'
 
 type FilterType = 'all' | 'new' | 'learning' | 'review' | 'suspended'
 
@@ -22,7 +23,7 @@ export default function Lists() {
     if (icon.startsWith('/')) {
       return (
         <img 
-          src={icon} 
+          src={getAssetPath(icon)} 
           alt={deck.name}
           style={{
             width: '35px',

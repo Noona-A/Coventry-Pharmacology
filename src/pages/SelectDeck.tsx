@@ -1,6 +1,7 @@
 import { useGame, type Deck } from '../store'
 import { useNavigate, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { getAssetPath } from '../utils/assets'
 
 export default function SelectDeck() {
   const { decks, selectDeck, settings } = useGame()
@@ -33,7 +34,7 @@ export default function SelectDeck() {
     if (icon.startsWith('/')) {
       return (
         <img 
-          src={icon} 
+          src={getAssetPath(icon)} 
           alt={deck.name}
           style={{
             width: '50px',
