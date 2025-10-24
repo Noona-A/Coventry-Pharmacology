@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useGame } from '../store'
+import { Home, Crown } from 'lucide-react'
 
 export default function Stats() {
   const { statistics, gold, studiedToday } = useGame()
@@ -39,7 +40,7 @@ export default function Stats() {
         transition: 'all 0.3s ease',
         zIndex: 100
       }}>
-        🏠
+        <Home size={20} />
       </Link>
 
       {/* Header */}
@@ -198,7 +199,9 @@ export default function Stats() {
             textAlign: 'center'
           }}
         >
-          <div style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', marginBottom: '8px' }}>👑</div>
+          <div style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', marginBottom: '8px' }}>
+            <Crown size={48} fill="#FFD700" color="#A855F7" />
+          </div>
           <div style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: 'bold', color: '#A855F7', marginBottom: '4px' }}>
             {statistics.totalGoldEarned}
           </div>

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import BrainIcon from '../components/BrainIcon'
+import { Home as HomeIcon, Play, BarChart3, Crown, Settings, List } from 'lucide-react'
 
 export default function Home() {
   return (
@@ -30,7 +31,7 @@ export default function Home() {
         transition: 'all 0.3s ease',
         zIndex: 10
       }}>
-        🏠
+        <HomeIcon size={20} />
       </Link>
 
       <div className="hero">
@@ -114,31 +115,31 @@ export default function Home() {
           >
             <Link to="/play" style={{ textDecoration: 'none', width: '100%', display: 'flex', justifyContent: 'center' }}>
               <button className="btn" style={{ background: 'linear-gradient(135deg, #FF6B6B, #FF347A)' }}>
-                <span style={{ fontSize: 20 }}>▶</span> Play
+                <Play size={20} fill="white" /> Play
               </button>
             </Link>
             
             <Link to="/lists" style={{ textDecoration: 'none', width: '100%', display: 'flex', justifyContent: 'center' }}>
               <button className="btn" style={{ background: 'linear-gradient(135deg, #9A40FF, #7D2AFF)' }}>
-                <span style={{ fontSize: 20 }}>☰</span> My Lists
+                <List size={20} /> My Lists
               </button>
             </Link>
             
             <Link to="/stats" style={{ textDecoration: 'none', width: '100%', display: 'flex', justifyContent: 'center' }}>
               <button className="btn" style={{ background: 'linear-gradient(135deg, #4587FF, #3FB6FF)' }}>
-                <span style={{ fontSize: 20 }}>📊</span> Statistics
+                <BarChart3 size={20} /> Statistics
               </button>
             </Link>
             
             <Link to="/cosmetics" style={{ textDecoration: 'none', width: '100%', display: 'flex', justifyContent: 'center' }}>
               <button className="btn" style={{ background: 'linear-gradient(135deg, #FFD700, #FFA500)' }}>
-                <span style={{ fontSize: 20 }}>👑</span> Cosmetics Shop
+                <Crown size={20} fill="#FFD700" /> Cosmetics Shop
               </button>
             </Link>
             
             <Link to="/settings" style={{ textDecoration: 'none', width: '100%', display: 'flex', justifyContent: 'center' }}>
               <button className="btn" style={{ background: 'linear-gradient(135deg, #4587FF, #3FB6FF)' }}>
-                <span style={{ fontSize: 20 }}>⚙</span> Settings
+                <Settings size={20} /> Settings
               </button>
             </Link>
           </motion.div>

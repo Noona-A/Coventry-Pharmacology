@@ -2,6 +2,7 @@ import { useGame, type Deck } from '../store'
 import { useNavigate, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { getAssetPath } from '../utils/assets'
+import { Home, Play } from 'lucide-react'
 
 export default function SelectDeck() {
   const { decks, selectDeck, settings } = useGame()
@@ -80,7 +81,7 @@ export default function SelectDeck() {
         transition: 'all 0.3s ease',
         zIndex: 100
       }}>
-        🏠
+        <Home size={20} />
       </Link>
 
       {/* Header */}
@@ -262,7 +263,7 @@ export default function SelectDeck() {
                   flexShrink: 0
                 }}
               >
-                ▶
+                <Play size={20} fill="rgb(255, 107, 107)" />
               </motion.div>
             </motion.div>
           )

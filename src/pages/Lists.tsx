@@ -3,6 +3,7 @@ import { useGame, type Deck } from '../store'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { getAssetPath } from '../utils/assets'
+import { Home, Play, Edit, ArrowLeft } from 'lucide-react'
 
 type FilterType = 'all' | 'new' | 'learning' | 'review' | 'suspended'
 
@@ -110,7 +111,7 @@ export default function Lists() {
           boxShadow: '0 0 20px rgba(139, 92, 246, 0.3)',
           zIndex: 1000
         }}>
-          🏠
+          <Home size={20} />
         </Link>
 
         {/* Header */}
@@ -286,7 +287,7 @@ export default function Lists() {
                       boxShadow: '0 0 15px rgba(74, 222, 128, 0.3)'
                     }}
                   >
-                    ▶
+                    <Play size={18} fill="rgb(74, 222, 128)" />
                   </motion.button>
                   <motion.button
                     whileHover={{ scale: 1.1 }}
@@ -311,7 +312,7 @@ export default function Lists() {
                       boxShadow: '0 0 15px rgba(96, 165, 250, 0.3)'
                     }}
                   >
-                    ✎
+                    <Edit size={18} />
                   </motion.button>
                 </div>
               </motion.div>
@@ -354,12 +355,10 @@ export default function Lists() {
         textDecoration: 'none',
         transition: 'all 0.3s ease',
         boxShadow: '0 0 20px rgba(139, 92, 246, 0.3)',
-        zIndex: 100
-      }}>
-        🏠
-      </Link>
-
-      {/* Header */}
+          zIndex: 100
+        }}>
+          <Home size={20} />
+        </Link>      {/* Header */}
       <div style={{ 
         display: 'flex', 
         alignItems: 'center', 
@@ -389,7 +388,7 @@ export default function Lists() {
             transition: 'all 0.3s ease'
           }}
         >
-          ←
+          <ArrowLeft size={20} />
         </motion.button>
         <h2 style={{ 
           margin: 0, 

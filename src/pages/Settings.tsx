@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useGame } from '../store'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { Home, ArrowLeft } from 'lucide-react'
 
 export default function Settings() {
   const { settings, updateSettings } = useGame()
@@ -55,7 +56,7 @@ export default function Settings() {
         transition: 'all 0.3s ease',
         zIndex: 100
       }}>
-        🏠
+        <Home size={20} />
       </Link>
 
       {/* Header */}
@@ -276,14 +277,17 @@ export default function Settings() {
         <Link 
           to="/" 
           style={{
-            display: 'block',
-            textAlign: 'center',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            justifyContent: 'center',
+            width: '100%',
             color: 'rgba(255, 255, 255, 0.6)',
             textDecoration: 'none',
             fontSize: 'clamp(0.8rem, 2vw, 0.9rem)'
           }}
         >
-          ← Back to Home
+          <ArrowLeft size={16} /> Back to Home
         </Link>
       </motion.div>
       </div>

@@ -4,6 +4,7 @@ import { useGame, BRAIN_COSMETICS } from '../store'
 import { useState } from 'react'
 import BrainIcon from '../components/BrainIcon'
 import { getAssetPath } from '../utils/assets'
+import { Home } from 'lucide-react'
 
 export default function Cosmetics() {
   const { gold, ownedCosmetics, equippedCosmetics, buyCosmetic, equipCosmetic } = useGame()
@@ -56,7 +57,7 @@ export default function Cosmetics() {
         transition: 'all 0.3s ease',
         zIndex: 100
       }}>
-        🏠
+        <Home size={20} />
       </Link>
 
       {/* Header */}
