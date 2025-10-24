@@ -214,7 +214,7 @@ export default function GameBoard() {
       <div className="page">
         {/* Navigation */}
         <div className="nav">
-          <Link to="/" className="nav-icon" aria-label="Home">
+          <Link to="/" className="nav-icon">
             <Home size={20} />
           </Link>
         </div>
