@@ -5,11 +5,9 @@ import App from './App'
 import './index.css'
 import { useGame, BRAIN_COSMETICS } from './store'
 
-// Expose store to window for admin commands (development only)
-if (import.meta.env.DEV) {
-  ;(window as any).useGame = useGame
-  ;(window as any).BRAIN_COSMETICS = BRAIN_COSMETICS
-}
+// Expose store to window for admin commands (in all environments)
+;(window as any).useGame = useGame
+;(window as any).BRAIN_COSMETICS = BRAIN_COSMETICS
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
