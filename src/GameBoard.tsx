@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import BrainIcon from './components/BrainIcon'
 import SessionComplete from './components/SessionComplete'
-import { Home, Trophy, Fire } from 'lucide-react'
+import { Home, Trophy, Flame } from 'lucide-react'
 
 function DraggableCard({ children, id }: { children: React.ReactNode; id: string }) {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({ id })
@@ -229,7 +229,7 @@ export default function GameBoard() {
           </div>
           <div className="hud-item flame" aria-hidden={false}>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-              <Fire size={16} />
+              <Flame size={16} />
               <span>{statistics.streak}</span>
             </span>
           </div>
