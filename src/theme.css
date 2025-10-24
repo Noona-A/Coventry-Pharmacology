@@ -232,14 +232,11 @@ body {
 
 /* Brain Zone */
 .brainZone {
-  position: absolute;
-  bottom: clamp(80px, 15vh, 140px);
-  left: 50%;
-  transform: translateX(-50%);
   display: grid;
   place-items: center;
+  margin-top: 80px;
+  margin-bottom: clamp(40px, 8vh, 60px);
   text-align: center;
-  z-index: 2;
 }
 
 .brainZone p {
@@ -456,7 +453,8 @@ body {
   }
   
   .brainZone {
-    bottom: clamp(100px, 18vh, 160px);
+    margin-top: 60px;
+    margin-bottom: clamp(30px, 6vh, 50px);
   }
   
   .game-center {
@@ -484,7 +482,8 @@ body {
   }
   
   .brainZone {
-    bottom: clamp(80px, 16vh, 140px);
+    margin-top: 50px;
+    margin-bottom: clamp(20px, 4vh, 40px);
   }
   
   .game-center {
