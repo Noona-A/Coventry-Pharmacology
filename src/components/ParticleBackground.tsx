@@ -7,8 +7,10 @@ interface Particle {
   speedX: number
   speedY: number
   opacity: number
-  symbol: string
+  rotation: number
+  rotationSpeed: number
   color: string
+  shape: 'circle' | 'square' | 'triangle'
 }
 
 export default function ParticleBackground() {
@@ -29,30 +31,26 @@ export default function ParticleBackground() {
     setCanvasSize()
     window.addEventListener('resize', setCanvasSize)
 
-    // Brain-themed symbols
-    const symbols = ['🧠', '⚡', '💊', '🔬', '⚗️', '💉', '🩺', '⭐', '✨']
-    const colors = [
-      'rgba(255, 138, 61, 0.3)',
-      'rgba(154, 64, 255, 0.3)',
-      'rgba(255, 107, 107, 0.3)',
-      'rgba(96, 165, 250, 0.3)',
-      'rgba(255, 215, 0, 0.3)',
-    ]
+    // Colorful confetti particles
+    const colors = ['#ff6b35', '#a855f7', '#ef4444', '#3b82f6', '#fbbf24', '#10b981', '#ec4899', '#f97316']
+    const shapes: Array<'circle' | 'square' | 'triangle'> = ['circle', 'square', 'triangle']
 
     // Create particles
-    const particleCount = window.innerWidth < 768 ? 15 : 25
+    const particleCount = window.innerWidth < 768 ? 20 : 35
     const particles: Particle[] = []
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 20 + 15,
-        speedX: (Math.random() - 0.5) * 0.5,
-        speedY: (Math.random() - 0.5) * 0.5,
-        opacity: Math.random() * 0.3 + 0.1,
-        symbol: symbols[Math.floor(Math.random() * symbols.length)],
+        size: Math.random() * 8 + 4,
+        speedX: (Math.random() - 0.5) * 0.8,
+        speedY: (Math.random() - 0.5) * 0.8,
+        opacity: Math.random() * 0.4 + 0.3,
+        rotation: Math.random() * Math.PI * 2,
+        rotationSpeed: (Math.random() - 0.5) * 0.03,
         color: colors[Math.floor(Math.random() * colors.length)],
+        shape: shapes[Math.floor(Math.random() * shapes.length)],
       })
     }
 
@@ -66,6 +64,7 @@ export default function ParticleBackground() {
         // Update position
         particle.x += particle.speedX
         particle.y += particle.speedY
+        particle.rotation += particle.rotationSpeed
 
         // Wrap around edges
         if (particle.x > canvas.width) particle.x = 0
@@ -73,29 +72,33 @@ export default function ParticleBackground() {
         if (particle.y > canvas.height) particle.y = 0
         if (particle.y < 0) particle.y = canvas.height
 
-        // Draw particle
-        ctx.font = `${particle.size}px Arial`
+        // Draw confetti shape
+        ctx.save()
+        ctx.translate(particle.x, particle.y)
+        ctx.rotate(particle.rotation)
         ctx.globalAlpha = particle.opacity
-        ctx.fillText(particle.symbol, particle.x, particle.y)
-      })
+        ctx.fillStyle = particle.color
 
-      // Draw connections between nearby particles
-      ctx.globalAlpha = 0.1
-      particles.forEach((p1, i) => {
-        particles.slice(i + 1).forEach((p2) => {
-          const dx = p1.x - p2.x
-          const dy = p1.y - p2.y
-          const distance = Math.sqrt(dx * dx + dy * dy)
-
-          if (distance < 150) {
-            ctx.strokeStyle = p1.color
-            ctx.lineWidth = 1
+        switch (particle.shape) {
+          case 'circle':
             ctx.beginPath()
-            ctx.moveTo(p1.x, p1.y)
-            ctx.lineTo(p2.x, p2.y)
-            ctx.stroke()
-          }
-        })
+            ctx.arc(0, 0, particle.size / 2, 0, Math.PI * 2)
+            ctx.fill()
+            break
+          case 'square':
+            ctx.fillRect(-particle.size / 2, -particle.size / 2, particle.size, particle.size)
+            break
+          case 'triangle':
+            ctx.beginPath()
+            ctx.moveTo(0, -particle.size / 2)
+            ctx.lineTo(particle.size / 2, particle.size / 2)
+            ctx.lineTo(-particle.size / 2, particle.size / 2)
+            ctx.closePath()
+            ctx.fill()
+            break
+        }
+
+        ctx.restore()
       })
 
       animationFrameId = requestAnimationFrame(animate)
