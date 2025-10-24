@@ -7,9 +7,9 @@ export default function Game() {
   const { currentDeckId } = useGame()
   return (
     <div className="container">
-      <div style={{position:'fixed', top:16, left:16}}>
-        <Link to="/" className="link" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-          <ArrowLeft size={16} /> Home
+      <div style={{position:'fixed', top:16, left:16, zIndex: 100}}>
+        <Link to="/" className="nav-icon" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+          <ArrowLeft size={20} />
         </Link>
       </div>
       {!currentDeckId ? (
