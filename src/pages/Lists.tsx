@@ -89,7 +89,7 @@ export default function Lists() {
         flexDirection: 'column',
         overflow: 'hidden',
         boxSizing: 'border-box',
-        background: 'var(--bg)'
+        background: 'transparent'
       }}>
         {/* Home Button - Top Left Corner */}
         <Link to="/" style={{ 
@@ -328,7 +328,7 @@ export default function Lists() {
       display: 'flex',
       flexDirection: 'column',
       overflow: 'hidden',
-      background: 'var(--bg)'
+      background: 'transparent'
     }}>
       {/* Home Button - Top Left Corner */}
       <Link to="/" style={{ 

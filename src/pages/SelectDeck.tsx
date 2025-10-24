@@ -60,7 +60,7 @@ export default function SelectDeck() {
       flexDirection: 'column',
       overflow: 'hidden',
       boxSizing: 'border-box',
-      background: 'var(--bg)'
+      background: 'transparent'
     }}>
       {/* Home Button - Top Left Corner */}
       <Link to="/" style={{ 
