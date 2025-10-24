@@ -356,6 +356,15 @@ export const useGame = create<GameState>()(
   },
 
   selectDeck: (id) => {
+    const state = get()
+    
+    // Check if resuming an existing session for this deck
+    if (state.currentDeckId === id && state.sessionCards.length > 0) {
+      // Resume existing session - don't reset anything
+      return
+    }
+    
+    // Starting a new session
     set({ currentDeckId: id, idx: 0, score: 0, phase: 'learn', eliminatedCorners: [], attempts: 0 })
     // Get due cards for this session and store as snapshot
     const dueCards = get().getDueCards()
