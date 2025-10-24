@@ -255,7 +255,7 @@ export default function GameBoard() {
         </div>
 
         {/* Center Game Area */}
-        <div className={`game-center ${isDragging && actualPhase === 'drag' ? 'dragging' : ''}`}>
+        <div className={`game-center ${actualPhase === 'learn' ? 'learn-mode' : 'test-mode'} ${isDragging && actualPhase === 'drag' ? 'dragging' : ''}`}>
           {/* Main card */}
           <DraggableCard id="flashcard">
             <motion.div

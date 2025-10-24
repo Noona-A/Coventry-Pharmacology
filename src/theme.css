@@ -462,7 +462,8 @@ body {
     z-index: 2;
   }
   
-  .game-center {
+  /* Learn mode: card at top, brain at bottom */
+  .game-center.learn-mode {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -472,6 +473,11 @@ body {
     position: relative;
     height: 100%;
     gap: 0;
+  }
+  
+  /* Test mode: keep centered layout */
+  .game-center.test-mode {
+    padding: clamp(30px, 6vh, 50px);
   }
 }
 
@@ -504,7 +510,8 @@ body {
     z-index: 2;
   }
   
-  .game-center {
+  /* Learn mode: card at top, brain at bottom */
+  .game-center.learn-mode {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -514,5 +521,10 @@ body {
     position: relative;
     height: 100%;
     gap: 0;
+  }
+  
+  /* Test mode: keep centered layout */
+  .game-center.test-mode {
+    padding: clamp(20px, 4vh, 40px);
   }
 }
