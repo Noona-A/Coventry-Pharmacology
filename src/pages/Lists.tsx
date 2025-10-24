@@ -158,9 +158,8 @@ export default function Lists() {
                 animate={{ opacity: 1, y: 0 }}
                 whileHover={{ scale: 1.02 }}
                 style={{
-                  background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2))',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.15))',
+                  border: '2px solid rgba(139, 92, 246, 0.3)',
                   borderRadius: '20px',
                   padding: 'clamp(12px, 3vw, 24px)',
                   display: 'flex',
@@ -168,7 +167,6 @@ export default function Lists() {
                   gap: 'clamp(12px, 3vw, 24px)',
                   transition: 'all 0.3s ease',
                   minHeight: '80px',
-                  boxShadow: '0 0 20px rgba(138, 43, 226, 0.2)',
                   cursor: 'pointer'
                 }}
                 onClick={() => setSelectedDeckId(deck.id)}
