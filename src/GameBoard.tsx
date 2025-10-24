@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import BrainIcon from './components/BrainIcon'
 import SessionComplete from './components/SessionComplete'
+import { Home, Trophy, Fire } from 'lucide-react'
 
 function DraggableCard({ children, id }: { children: React.ReactNode; id: string }) {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({ id })
@@ -213,16 +214,24 @@ export default function GameBoard() {
       <div className="page">
         {/* Navigation */}
         <div className="nav">
-          <Link to="/" className="nav-icon">🏠</Link>
+          <Link to="/" className="nav-icon" aria-label="Home">
+            <Home size={20} />
+          </Link>
         </div>
 
         {/* HUD */}
         <div className="hud">
-          <div className="hud-item">
-            🏆 {gold}
+          <div className="hud-item" aria-hidden={false}>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+              <Trophy size={16} />
+              <span>{gold}</span>
+            </span>
           </div>
-          <div className="hud-item flame">
-            🔥 {statistics.streak}
+          <div className="hud-item flame" aria-hidden={false}>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+              <Fire size={16} />
+              <span>{statistics.streak}</span>
+            </span>
           </div>
         </div>
 
