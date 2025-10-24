@@ -454,7 +454,7 @@ body {
   
   .brainZone {
     position: fixed;
-    bottom: 80px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%) scale(0.7);
     margin-top: 0;
@@ -467,8 +467,8 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-top: 20px;
-    padding-bottom: 160px;
+    padding-top: 60px;
+    padding-bottom: 140px;
     position: relative;
     height: 100%;
     gap: 0;
@@ -496,7 +496,7 @@ body {
   
   .brainZone {
     position: fixed;
-    bottom: 60px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%) scale(0.6);
     margin-top: 0;
@@ -509,8 +509,8 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-top: 15px;
-    padding-bottom: 140px;
+    padding-top: 50px;
+    padding-bottom: 120px;
     position: relative;
     height: 100%;
     gap: 0;
