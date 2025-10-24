@@ -6,6 +6,13 @@ import { liver } from './liver'
 import { gastrointestinal } from './gastrointestinal'
 import { blood } from './blood'
 import { respiratory } from './respiratory'
+import { cardiology } from './cardiology'
+import { diabetes } from './diabetes'
+import { adr } from './adr'
+import { pain } from './pain'
+import { controlledDrugs } from './controlled-drugs'
+import { alteredStates } from './altered-states'
+import { polypharmacy } from './polypharmacy'
 
 export const allDecks: Deck[] = [
   pharmacokineticsDynamics,
@@ -15,5 +22,11 @@ export const allDecks: Deck[] = [
   gastrointestinal,
   blood,
   respiratory,
-  // Add more decks here as you create them
+  cardiology,
+  diabetes,
+  adr,
+  pain,
+  controlledDrugs,
+  alteredStates,
+  polypharmacy,
 ]
