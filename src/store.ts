@@ -404,8 +404,6 @@ export const useGame = create<GameState>()(
     }
     
     // Mark card as seen once (learning phase complete for this card)
-    const isNewCard = currentCard.seenCount === 0
-    
     const updatedDecks = state.decks.map(d => {
       if (d.id === state.currentDeckId) {
         return {
@@ -427,12 +425,6 @@ export const useGame = create<GameState>()(
       c.id === currentCard.id ? { ...c, seenCount: 1 } : c
     )
     
-    // Increment studiedToday counter for new cards (count when first seen in learn mode)
-    const updatedStudiedToday = isNewCard ? {
-      ...state.studiedToday,
-      newCards: state.studiedToday.newCards + 1,
-    } : state.studiedToday
-    
     // Move to next card in learning batch
     const nextIdx = state.idx + 1
     
@@ -443,7 +435,6 @@ export const useGame = create<GameState>()(
         sessionCards: updatedSessionCards,
         learningBatch: updatedLearningBatch,
         testingBatch: updatedLearningBatch,
-        studiedToday: updatedStudiedToday,
         phase: 'drag',
         idx: 0,
         eliminatedCorners: [],
@@ -455,7 +446,6 @@ export const useGame = create<GameState>()(
         decks: updatedDecks,
         sessionCards: updatedSessionCards,
         learningBatch: updatedLearningBatch,
-        studiedToday: updatedStudiedToday,
         idx: nextIdx,
         eliminatedCorners: [],
         attempts: 0
@@ -593,9 +583,7 @@ export const useGame = create<GameState>()(
 
           // Award gold and update statistics for perfect answer
           const goldEarned = state.attempts === 0 ? 10 : 0 // 10 gold for perfect answers
-          // Card seenCount is already > 1 here (was set to 1 in learn phase, now incrementing)
-          // So this is a review completion, not a new card
-          const isReviewCard = currentCard.seenCount > 0
+          const isNewCard = currentCard.seenCount === 0
           
           set({
             gold: state.gold + goldEarned,
@@ -607,8 +595,8 @@ export const useGame = create<GameState>()(
             },
             studiedToday: {
               ...state.studiedToday,
-              // Don't increment newCards here - already counted in learn phase
-              reviews: isReviewCard ? state.studiedToday.reviews + 1 : state.studiedToday.reviews,
+              newCards: isNewCard ? state.studiedToday.newCards + 1 : state.studiedToday.newCards,
+              reviews: !isNewCard ? state.studiedToday.reviews + 1 : state.studiedToday.reviews,
             },
           })
         }
@@ -712,14 +700,13 @@ export const useGame = create<GameState>()(
     })
     
     // Update studied today counter
-    // Card seenCount is already > 0 here (was set to 1 in learn phase)
-    const isReviewCard = currentCard.seenCount > 0
+    const isNewCard = currentCard.seenCount === 0
     set({
       decks: updatedDecks,
       studiedToday: {
         ...state.studiedToday,
-        // Don't increment newCards here - already counted in learn phase
-        reviews: isReviewCard ? state.studiedToday.reviews + 1 : state.studiedToday.reviews,
+        newCards: isNewCard ? state.studiedToday.newCards + 1 : state.studiedToday.newCards,
+        reviews: !isNewCard ? state.studiedToday.reviews + 1 : state.studiedToday.reviews,
       },
     })
     
