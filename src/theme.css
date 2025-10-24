@@ -453,12 +453,13 @@ body {
   }
   
   .brainZone {
-    position: absolute;
+    position: fixed;
     bottom: 15vh;
     left: 50%;
     transform: translateX(-50%);
     margin-top: 0;
     margin-bottom: 0;
+    z-index: 2;
   }
   
   .game-center {
@@ -488,12 +489,13 @@ body {
   }
   
   .brainZone {
-    position: absolute;
+    position: fixed;
     bottom: 12vh;
     left: 50%;
     transform: translateX(-50%);
     margin-top: 0;
     margin-bottom: 0;
+    z-index: 2;
   }
   
   .game-center {
