@@ -4,6 +4,7 @@ import type { DragEndEvent } from '@dnd-kit/core'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useGame, type Corner } from './store'
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import BrainIcon from './components/BrainIcon'
 import SessionComplete from './components/SessionComplete'
 
@@ -212,7 +213,7 @@ export default function GameBoard() {
       <div className="page">
         {/* Navigation */}
         <div className="nav">
-          <a href="/" className="nav-icon">🏠</a>
+          <Link to="/" className="nav-icon">🏠</Link>
         </div>
 
         {/* HUD */}
