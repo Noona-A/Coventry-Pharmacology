@@ -79,15 +79,17 @@ export default function Lists() {
   // Deck List View
   if (!selectedDeckId) {
     return (
-      <div className="page" style={{ 
+      <div style={{ 
         padding: '20px',
         paddingBottom: '40px',
-        minHeight: '100vh',
-        maxHeight: '100vh',
+        minHeight: '100svh',
+        height: '100svh',
+        maxHeight: '100svh',
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
+        background: 'var(--bg)'
       }}>
         {/* Home Button - Top Left Corner */}
         <Link to="/" style={{ 
@@ -317,13 +319,16 @@ export default function Lists() {
   const filteredCards = getFilteredCards()
 
   return (
-    <div className="page" style={{ 
+    <div style={{ 
       padding: '20px', 
       paddingBottom: '40px',
-      height: '100vh',
+      minHeight: '100svh',
+      height: '100svh',
+      maxHeight: '100svh',
       display: 'flex',
       flexDirection: 'column',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      background: 'var(--bg)'
     }}>
       {/* Home Button - Top Left Corner */}
       <Link to="/" style={{ 

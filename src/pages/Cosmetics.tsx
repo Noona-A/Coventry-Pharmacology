@@ -143,7 +143,7 @@ export default function Cosmetics() {
             color: 'rgba(255, 255, 255, 0.6)',
             textAlign: 'center'
           }}>
-            {previewId ? 'Hover over items to preview them!' : 'Hover over items to see how they look!'}
+            {previewId ? 'Previewing item!' : window.innerWidth > 768 ? 'Hover over items to preview!' : 'Tap items to preview!'}
           </p>
         </div>
 
@@ -191,14 +191,22 @@ export default function Cosmetics() {
           </div>
 
           {/* Cosmetics Grid with Hint */}
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            overflowY: 'auto',
-            paddingRight: '10px',
-            gap: 'clamp(12px, 3vw, 20px)',
-            flex: 1
-          }}>
+          <div 
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              overflowY: 'auto',
+              paddingRight: '10px',
+              gap: 'clamp(12px, 3vw, 20px)',
+              flex: 1
+            }}
+            onClick={(e) => {
+              // Clear preview when tapping empty space (on mobile)
+              if (e.target === e.currentTarget) {
+                setPreviewId(null)
+              }
+            }}
+          >
             <div style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fill, minmax(clamp(140px, 25vw, 180px), 1fr))',
@@ -217,12 +225,17 @@ export default function Cosmetics() {
               whileHover={{ scale: 1.05 }}
               onHoverStart={() => setPreviewId(cosmetic.id)}
               onHoverEnd={() => setPreviewId(null)}
+              onTouchStart={() => setPreviewId(cosmetic.id)}
               style={{
                 background: isEquipped
                   ? 'linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 193, 7, 0.2))'
+                  : previewId === cosmetic.id
+                  ? 'linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(59, 130, 246, 0.25))'
                   : 'linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.15))',
                 border: isEquipped
                   ? '3px solid rgba(255, 215, 0, 0.6)'
+                  : previewId === cosmetic.id
+                  ? '3px solid rgba(139, 92, 246, 0.8)'
                   : '2px solid rgba(139, 92, 246, 0.3)',
                 borderRadius: 'clamp(12px, 3vw, 16px)',
                 padding: 'clamp(14px, 4vw, 20px)',
@@ -231,9 +244,18 @@ export default function Cosmetics() {
                 alignItems: 'center',
                 gap: 'clamp(8px, 2vw, 12px)',
                 position: 'relative',
-                cursor: isOwned ? 'pointer' : 'default'
+                cursor: isOwned ? 'pointer' : 'default',
+                transition: 'all 0.3s ease'
               }}
-              onClick={() => isOwned && !isEquipped && equipCosmetic(cosmetic.id)}
+              onClick={() => {
+                // On mobile, first tap previews, second tap equips
+                if (previewId === cosmetic.id && isOwned && !isEquipped) {
+                  equipCosmetic(cosmetic.id)
+                  setPreviewId(null)
+                } else if (!previewId) {
+                  setPreviewId(cosmetic.id)
+                }
+              }}
             >
               {isEquipped && (
                 <div style={{
@@ -248,6 +270,22 @@ export default function Cosmetics() {
                   color: '#000'
                 }}>
                   EQUIPPED
+                </div>
+              )}
+              
+              {!isEquipped && previewId === cosmetic.id && (
+                <div style={{
+                  position: 'absolute',
+                  top: 'clamp(6px, 1.5vw, 8px)',
+                  right: 'clamp(6px, 1.5vw, 8px)',
+                  background: 'rgba(139, 92, 246, 0.9)',
+                  borderRadius: 'clamp(6px, 1.5vw, 8px)',
+                  padding: 'clamp(3px, 1vw, 4px) clamp(6px, 1.5vw, 8px)',
+                  fontSize: 'clamp(0.6rem, 1.5vw, 0.7rem)',
+                  fontWeight: 'bold',
+                  color: '#FFF'
+                }}>
+                  👀 PREVIEW
                 </div>
               )}
 
@@ -349,7 +387,7 @@ export default function Cosmetics() {
                   fontWeight: 'bold',
                   textAlign: 'center'
                 }}>
-                  Click to Equip
+                  {previewId === cosmetic.id ? 'Tap Again to Equip' : 'Tap to Preview'}
                 </div>
               )}
             </motion.div>

@@ -50,15 +50,17 @@ export default function SelectDeck() {
   }
   
   return (
-    <div className="page" style={{ 
+    <div style={{ 
       padding: '20px',
       paddingBottom: '40px',
-      minHeight: '100vh',
-      maxHeight: '100vh',
+      minHeight: '100svh',
+      height: '100svh',
+      maxHeight: '100svh',
       display: 'flex',
       flexDirection: 'column',
       overflow: 'hidden',
-      boxSizing: 'border-box'
+      boxSizing: 'border-box',
+      background: 'var(--bg)'
     }}>
       {/* Home Button - Top Left Corner */}
       <Link to="/" style={{ 

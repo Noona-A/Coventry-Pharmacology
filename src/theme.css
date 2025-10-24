@@ -54,6 +54,8 @@ body {
   place-items: center;
   background: var(--bg);
   padding: 24px;
+  padding-top: max(24px, env(safe-area-inset-top));
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
   position: relative;
   overflow: hidden; /* Prevent scrollbars when dragging */
 }
@@ -229,7 +231,8 @@ body {
 .brainZone {
   display: grid;
   place-items: center;
-  margin-top: clamp(80px, 12vh, 140px);
+  margin-top: clamp(60px, 10vh, 100px);
+  margin-bottom: clamp(40px, 8vh, 60px);
   text-align: center;
 }
 
@@ -321,6 +324,9 @@ body {
   gap: 0;
   position: relative;
   z-index: 3;
+  width: 100%;
+  padding-top: clamp(20px, 4vh, 40px);
+  padding-bottom: clamp(40px, 8vh, 80px);
 }
 
 .game-center.dragging .card {
@@ -409,43 +415,75 @@ body {
 @media (max-width: 768px) {
   :root {
     --corner-size: clamp(150px, 40vw, 220px);
+    --corner-inset: clamp(8px, 2vw, 20px);
+    --top-safe: 90px;
   }
   
   .hud {
-    top: 10px;
-    right: 10px;
+    top: 8px;
+    right: 8px;
+    gap: 8px;
   }
   
   .nav {
-    top: 10px;
-    left: 10px;
+    top: 8px;
+    left: 8px;
   }
   
   .page {
-    padding: 16px;
+    padding: 12px;
+    padding-top: max(12px, env(safe-area-inset-top));
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
   }
   
   .card {
-    padding: 24px;
+    padding: 20px;
+    width: clamp(260px, 85vw, 480px);
+    min-height: clamp(200px, 30vh, 320px);
   }
   
   .corner {
-    padding: 12px 16px;
-    font-size: 14px;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  
+  .brainZone {
+    margin-top: clamp(40px, 8vh, 80px);
+    margin-bottom: clamp(30px, 6vh, 50px);
   }
   
   .game-center {
-    padding-bottom: 120px;
+    padding-top: clamp(30px, 6vh, 50px);
+    padding-bottom: clamp(80px, 15vh, 120px);
   }
 }
 
 @media (max-width: 480px) {
   :root {
-    --corner-size: clamp(130px, 38vw, 180px);
+    --corner-size: clamp(120px, 36vw, 160px);
+    --corner-inset: clamp(6px, 1.5vw, 15px);
+    --top-safe: 80px;
   }
   
   .hud-item {
-    padding: 6px 12px;
-    font-size: 14px;
+    padding: 5px 10px;
+    font-size: 13px;
+    gap: 6px;
+  }
+  
+  .card {
+    padding: 18px;
+    width: clamp(240px, 88vw, 420px);
+    min-height: clamp(180px, 28vh, 280px);
+  }
+  
+  .brainZone {
+    margin-top: clamp(30px, 6vh, 60px);
+    margin-bottom: clamp(20px, 4vh, 40px);
+  }
+  
+  .game-center {
+    padding-top: clamp(20px, 4vh, 40px);
+    padding-bottom: clamp(60px, 12vh, 100px);
   }
 }

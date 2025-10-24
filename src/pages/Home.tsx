@@ -7,10 +7,10 @@ export default function Home() {
     <div className="page" style={{ 
       position: 'relative',
       padding: 'clamp(10px, 3vw, 20px)',
+      paddingBottom: 'clamp(40px, 10vh, 60px)',
       boxSizing: 'border-box',
       overflow: 'auto',
-      minHeight: '100vh',
-      maxHeight: '100vh'
+      minHeight: '100svh'
     }}>
       {/* Home Icon in top left */}
       <Link to="/" style={{ 
