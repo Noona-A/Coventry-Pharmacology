@@ -453,12 +453,18 @@ body {
   }
   
   .brainZone {
-    margin-top: 60px;
-    margin-bottom: clamp(30px, 6vh, 50px);
+    position: absolute;
+    bottom: 15vh;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0;
+    margin-bottom: 0;
   }
   
   .game-center {
     padding: clamp(30px, 6vh, 50px);
+    position: relative;
+    height: 100%;
   }
 }
 
@@ -482,11 +488,17 @@ body {
   }
   
   .brainZone {
-    margin-top: 50px;
-    margin-bottom: clamp(20px, 4vh, 40px);
+    position: absolute;
+    bottom: 12vh;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0;
+    margin-bottom: 0;
   }
   
   .game-center {
     padding: clamp(20px, 4vh, 40px);
+    position: relative;
+    height: 100%;
   }
 }
